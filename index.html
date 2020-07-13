@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom tool-tip</title>
+    <style>
+        
+        h1{
+            color:#004040;
+            font-weight: bold;
+            font-size:3em;
+            margin-bottom: 2em;
+        }
+        [data-tooltip]{
+            position: relative;
+            cursor:default;
+        }
+        [data-tooltip]::after{
+            position: absolute;
+            content: attr(data-tooltip);
+            width: 80px;
+            left: calc(75% - 70px);
+            bottom:125%;
+            color: white;
+            background-color: black;
+            padding: 8px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            font-weight: bold;
+            visibility: none;
+            opacity: 0;
+            transform:translateY(10px);
+            transition: opacity 0.3s, transform 0.2s;
+        }
+        [data-tooltip]:hover::after{
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS-Only Custom Tool-tip</h1>
+    <span data-tooltip="An example!">Hover over me</span>
+</body>
+</html>
